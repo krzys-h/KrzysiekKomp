@@ -286,7 +286,7 @@ extern void irq1(void);
 
 void kbd_init(void) 
 { 
-idt_set_desc(&idt[0x21],(u32int)&irq1,14,0); 
+idt_set_intr_gate(&idt[0x21], (u32int)&irq1); 
 enable_irq(1); 
 }
 

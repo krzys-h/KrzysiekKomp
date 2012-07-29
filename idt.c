@@ -21,6 +21,21 @@ void idt_set_desc(idt_descr_t* descr, u32int handler, u8int type, u8int dpl)
    descr->offset_16 = (handler >> 16);
 }
 
+void idt_set_intr_gate(idt_descr_t* descr, u32int handler) 
+{ 
+	idt_set_desc(descr, handler, 14, 0); 
+} 
+
+void idt_set_trap_gate(idt_descr_t* descr, u32int handler) 
+{ 
+	idt_set_desc(descr, handler, 15, 0); 
+} 
+
+void idt_set_system_gate(idt_descr_t* descr, u32int handler) 
+{ 
+	idt_set_desc(descr, handler, 15, 3); 
+}
+
 static unsigned int cached_irq_mask = 0xffff; 
 
 #define __byte(x,y)       (((unsigned char *)&(y))[x]) 

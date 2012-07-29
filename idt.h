@@ -20,6 +20,9 @@ typedef struct idt_ptr {
 void idt_init();
 
 void idt_set_desc(idt_descr_t* descr, u32int handler, u8int type, u8int dpl);
+void idt_set_intr_gate(idt_descr_t* descr, u32int handler);
+void idt_set_trap_gate(idt_descr_t* descr, u32int handler);
+void idt_set_system_gate(idt_descr_t* descr, u32int handler);
 
 static void idt_set(idt_ptr_t* gdt_ptr);
 

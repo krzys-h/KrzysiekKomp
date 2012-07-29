@@ -8,7 +8,7 @@ void clock_init(int hz)
 {
 	runtime = 0;
 	ustaw_czestotliwosc_pit(100);
-	idt_set_desc(&idt[0x20],(u32int)&irq0,14,0); 
+	idt_set_intr_gate(&idt[0x20], (u32int)&irq0); 
 	enable_irq(0); 
 }
 

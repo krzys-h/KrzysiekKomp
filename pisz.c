@@ -20,6 +20,16 @@ void pisz_u16int(u16int liczba)
 	}
 }
 
+void pisz_s16int(s16int liczba)
+{
+	if(liczba>=0) {
+		pisz_u16int(liczba);
+	} else {
+		vga_putch('-');
+		pisz_u16int(-liczba);
+	}
+}
+
 void pisz_time_ms(u32int czas)
 {
 	u32int time = czas;

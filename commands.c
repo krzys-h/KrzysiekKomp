@@ -7,13 +7,9 @@ void cmd_echo(char *param[])
 
 void cmd_time()
 {
-	char h,m,s;
+	time_t czas = gettime();
 	
-	h=getcmos(0x04);
-	m=getcmos(0x02);
-	s=getcmos(0x00);
-	
-	pisz_time(h*60*60+m*60+s);
+	pisz_time(czas.hour*60*60+czas.minute*60+czas.second);
 }
 
 void cmd_clrscr()
@@ -24,19 +20,6 @@ void cmd_clrscr()
 void cmd_runtime()
 {
 	pisz_time_ms(runtime);
-}
-
-void cmd_settime()
-{
-	time_t czas;
-	vga_puts("Godzina: ");
-	czas.h = getnum();
-	vga_puts("Minuta: ");
-	czas.m = getnum();
-	vga_puts("Sekunda: ");
-	czas.s = getnum();
-	settime(czas);
-	vga_puts("Ustawienia zapisane!\n");
 }
 
 void cmd_help()

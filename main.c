@@ -76,7 +76,6 @@ int main(void* mbd, unsigned int magic)
 			     if(!cmpstr(cmd,"echo"    )) cmd_echo(param1);
 			else if(!cmpstr(cmd,"clrscr"  )) cmd_clrscr();
 			else if(!cmpstr(cmd,"time"    )) cmd_time();
-			else if(!cmpstr(cmd,"settime" )) cmd_settime();
 			else if(!cmpstr(cmd,"runtime" )) cmd_runtime();
 			else if(!cmpstr(cmd,"help"    )) cmd_help();
 			else if(!cmpstr(cmd,"reboot"  )) cmd_reboot();

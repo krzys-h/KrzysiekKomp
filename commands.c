@@ -22,6 +22,15 @@ void cmd_runtime()
 	pisz_time_ms(runtime);
 }
 
+void cmd_memory()
+{
+	vga_puts("W komputerze jest ");
+	pisz_u16int(total_memory_size / 1024);
+	vga_puts(" MB = ");
+	pisz_u16int(total_memory_size);
+	vga_puts(" KB pamieci RAM.");
+}
+
 void cmd_help()
 {
 	vga_puts("KrzysiekKomp 1.0\n");

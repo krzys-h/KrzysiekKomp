@@ -1,6 +1,8 @@
 #ifndef __MAIN_H_
 #define __MAIN_H_
 
+#include "lib/multiboot.h"
+
 #include "common.h"
 #include "gdt.h"
 #include "idt.h"
@@ -11,5 +13,7 @@
 #include "power.h"
 #include "pisz.h"
 #include "cmos.h"
+
+extern u32int total_memory_size;
 
 #endif

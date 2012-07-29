@@ -43,8 +43,12 @@ void split(char *zrodlo, char *cmd, char *param1)
 	*param1=0;
 }
 
-int main(void* mbd, unsigned int magic)
+u32int total_memory_size;
+
+int main(multiboot_info_t* mbd, unsigned int magic)
 {
+	total_memory_size = mbd->mem_lower + mbd->mem_upper;
+
 	gdt_init();
 	idt_init();
 	
@@ -54,7 +58,7 @@ int main(void* mbd, unsigned int magic)
 
 	sti();
 	
-	if (magic != 0x2BADB002)
+	if (magic != MULTIBOOT_BOOTLOADER_MAGIC)
 	{
 		vga_puts("Multiboot error!");
 		while (1)
@@ -77,6 +81,7 @@ int main(void* mbd, unsigned int magic)
 			else if(!cmpstr(cmd,"clrscr"  )) cmd_clrscr();
 			else if(!cmpstr(cmd,"time"    )) cmd_time();
 			else if(!cmpstr(cmd,"runtime" )) cmd_runtime();
+			else if(!cmpstr(cmd,"memory"  )) cmd_memory();
 			else if(!cmpstr(cmd,"help"    )) cmd_help();
 			else if(!cmpstr(cmd,"reboot"  )) cmd_reboot();
 			else if(!cmpstr(cmd,"shutdown")) cmd_shutdown();

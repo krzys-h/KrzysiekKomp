@@ -16,3 +16,9 @@ void do_irq0(void)
 { 
 	runtime++;
 }
+
+void delay(u32int czas)
+{
+	u32int start_runtime = runtime;
+	while(runtime < (start_runtime + czas));
+}

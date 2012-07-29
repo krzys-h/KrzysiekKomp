@@ -22,6 +22,11 @@ void cmd_runtime()
 	pisz_time_ms(runtime);
 }
 
+void cmd_beep()
+{
+	beep();
+}
+
 void cmd_memory()
 {
 	vga_puts("W komputerze jest ");
@@ -40,6 +45,8 @@ void cmd_help()
 	vga_puts("echo param ===> Wyswietla parametr (param).\n");
 	vga_puts("time =========> Wyswietla aktualny czas.\n");
 	vga_puts("clrscr =======> Czysci ekran.\n");
+	vga_puts("memory =======> Pokazuje ilosc pamieci RAM.\n");
+	vga_puts("beep =========> Wydaje odglos z PC Speakera :)\n");
 	vga_puts("runtime ======> Pokazuje czas od uruchomienia systemu.\n");
 	vga_puts("help =========> Wyswietla ten ekran.\n");
 	vga_puts("reboot =======> Restartuje komputer.\n");

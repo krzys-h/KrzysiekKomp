@@ -15,6 +15,7 @@
 #include "cmos.h"
 #include "mouse.h"
 #include "exception.h"
+#include "sound.h"
 
 extern u32int total_memory_size;
 

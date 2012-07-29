@@ -83,6 +83,7 @@ int main(multiboot_info_t* mbd, unsigned int magic)
 			else if(!cmpstr(cmd,"clrscr"  )) cmd_clrscr();
 			else if(!cmpstr(cmd,"time"    )) cmd_time();
 			else if(!cmpstr(cmd,"runtime" )) cmd_runtime();
+			else if(!cmpstr(cmd,"beep"    )) cmd_beep();
 			else if(!cmpstr(cmd,"memory"  )) cmd_memory();
 			else if(!cmpstr(cmd,"help"    )) cmd_help();
 			else if(!cmpstr(cmd,"reboot"  )) cmd_reboot();

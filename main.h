@@ -16,6 +16,7 @@
 #include "mouse.h"
 #include "exception.h"
 #include "sound.h"
+#include "disc.h"
 
 extern u32int total_memory_size;
 

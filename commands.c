@@ -27,6 +27,13 @@ void cmd_beep()
 	beep();
 }
 
+void cmd_testboot()
+{
+	u8int buffer[512];
+	disc_read(0, 0, 0, 1, 1, (u16int*)&buffer[0]);
+	pisz_u16int((u16int)buffer[510]);
+}
+
 void cmd_memory()
 {
 	vga_puts("W komputerze jest ");

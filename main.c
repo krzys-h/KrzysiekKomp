@@ -51,9 +51,11 @@ int main(multiboot_info_t* mbd, unsigned int magic)
 
 	gdt_init();
 	idt_init();
+	exception_init();
 	
 	vga_init();
 	kbd_init();
+	mouse_init();
 	clock_init(100);
 
 	sti();

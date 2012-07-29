@@ -13,6 +13,8 @@
 #include "power.h"
 #include "pisz.h"
 #include "cmos.h"
+#include "mouse.h"
+#include "exception.h"
 
 extern u32int total_memory_size;
 

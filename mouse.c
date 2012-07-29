@@ -106,5 +106,5 @@ void mouse_init()
   mouse_read();  //Acknowledge
 
   //Setup the mouse handler
-  idt_set_intr_gate(&idt[0x20+0x12], (u32int)&mouse_handler);
+  idt_set_intr_gate(&idt[0x20+12], (u32int)&mouse_handler);
 }

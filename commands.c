@@ -29,9 +29,12 @@ void cmd_beep()
 
 void cmd_testboot()
 {
+	// Should print "85/170" (55/AA in decimal)
 	u8int buffer[512];
-	disc_read(0, 0, 0, 1, 1, (u16int*)&buffer[0]);
-	pisz_u16int((u16int)buffer[510]);
+	disc_read(0, 0, 0, 1, 1, &buffer[0]);
+	pisz_u8int(buffer[510]);
+	vga_putch('/');
+	pisz_u8int(buffer[511]);
 }
 
 void cmd_memory()

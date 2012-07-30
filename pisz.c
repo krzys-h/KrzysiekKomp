@@ -1,6 +1,6 @@
 #include "main.h"
 
-void pisz_u16int(u16int liczba)
+void pisz_u32int(u32int liczba)
 {
 	char bufor[10];
 	int i = 0;
@@ -20,7 +20,7 @@ void pisz_u16int(u16int liczba)
 	}
 }
 
-void pisz_s16int(s16int liczba)
+void pisz_s32int(s32int liczba)
 {
 	if(liczba>=0) {
 		pisz_u16int(liczba);
@@ -28,6 +28,26 @@ void pisz_s16int(s16int liczba)
 		vga_putch('-');
 		pisz_u16int(-liczba);
 	}
+}
+
+void pisz_u16int(u16int liczba)
+{
+	pisz_u32int((u32int)liczba);
+}
+	
+void pisz_s16int(s16int liczba)
+{
+	pisz_s32int((s32int)liczba);
+}
+
+void pisz_u8int(u8int liczba)
+{
+	pisz_u32int((u32int)liczba);
+}
+	
+void pisz_s8int(s8int liczba)
+{
+	pisz_s32int((s32int)liczba);
 }
 
 void pisz_time_ms(u32int czas)

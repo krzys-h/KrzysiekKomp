@@ -2,7 +2,12 @@ all: kernel
 	
 
 run: kernel
-	qemu-system-i386 -monitor stdio -kernel ./bin/kernel.bin
+	qemu-system-i386 -hda test_dysk -monitor stdio -kernel ./bin/kernel.bin
+	
+install: kernel
+	rm /osdysk/kernel.bin
+	cp ./bin/kernel.bin /osdysk/
+	sync
 
 prepare:
 	mkdir -p bin

@@ -69,9 +69,9 @@ int main(multiboot_info_t* mbd, unsigned int magic)
 
 	vga_puts("KrzysiekKomp v1.0\nKompilacja: "__DATE__" "__TIME__"\n\n");
 
-	char komenda[65];
-	char cmd[33];
-	char param1[33];
+	char komenda[128];
+	char cmd[64];
+	char param1[64];
 	
 	for(;;)
 	{

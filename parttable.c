@@ -55,7 +55,9 @@ partition_t parttable_getbootable()
 void parttable_initfs(u8int id)
 {
 	if(partition[id].used == 1) {
-		{
+		if(partition[id].filesystem == FS_LINUX) {
+			ext2_init(id);
+		} else {
 			vga_puts("[WARN] [INIT] [FS] [PART");
 			pisz_u8int(id);
 			vga_puts("] Nieobslugiwany system plikow!\n");

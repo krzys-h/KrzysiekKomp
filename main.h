@@ -18,6 +18,7 @@
 #include "sound.h"
 #include "disc.h"
 #include "parttable.h"
+#include "fs_ext2.h"
 
 extern u32int total_memory_size;
 

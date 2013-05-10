@@ -77,7 +77,7 @@ int main(multiboot_info_t* mbd, unsigned int magic)
 	
 	init_drivers();
 	init_filesystem();
-	delay(150);
+	delay(250);
 	vga_cls();
 	
 	

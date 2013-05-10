@@ -4,7 +4,7 @@ typedef struct
 { 
 	/* dane w buforze */ 
 	unsigned char *data; 
-	/* rozmiar, pocz¹tek bufora, koniec bufora */ 
+	/* rozmiar, poczatek bufora, koniec bufora */ 
 	unsigned size, in_ptr, out_ptr; 
 } queue_t; 
 
@@ -13,7 +13,7 @@ static int inq(queue_t *q, unsigned data)
 	unsigned temp; 
 	temp = q->in_ptr + 1; 
 	if(temp >= q->size) temp = 0; 
-	/* jeœli in_ptr+1==out_ptr to znaczy, ¿e kolejka jest pe³na */ 
+	/* jesli in_ptr+1==out_ptr to znaczy, ¿e kolejka jest pe³na */ 
 	if(temp == q->out_ptr) return -1; 
 	q->data[q->in_ptr] = data; 
 	q->in_ptr = temp; 
@@ -56,7 +56,7 @@ unsigned stat, data;
   if(stat & 0x01) 
   { 
    data = inportb(0x60); 
-/* pêtla, gdt b³¹d parzystoœci, lub koniec czasu oczekiwania */ 
+/* pêtla, gdt b³ad parzystosci, lub koniec czasu oczekiwania */ 
    if((stat & 0xC0) == 0) return data; 
   } 
  } 

@@ -6,6 +6,7 @@
 #define FS_FAT16A 0x04
 #define FS_FAT16B 0x06
 #define FS_FAT32 0x0B
+#define FS_LINUX 0x83
 
 typedef struct MBR_partiton {
 	u8int bootable; // Boot indicator bit flag: 0 = no, 0x80 = bootable (or "active")

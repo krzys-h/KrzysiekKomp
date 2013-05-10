@@ -7,13 +7,16 @@ MAGIC		equ	0x1BADB002	; 'magic number' lets bootloader find the header
 CHECKSUM	equ	-(MAGIC + FLAGS); checksum required
 STACKSIZE	equ	0x4000		; 16 KiB for stack
  
-section .text
-align 4
+section .multiboot
+; align 4
 ; setting multiboot header
 multiboot_header:
 	dd	MAGIC
    	dd	FLAGS
    	dd	CHECKSUM
+
+section .text
+align 4
  
 loader:
 	mov	esp, stack + STACKSIZE	; set up the stack

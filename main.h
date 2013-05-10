@@ -17,6 +17,8 @@
 #include "exception.h"
 #include "sound.h"
 #include "disc.h"
+#include "parttable.h"
+#include "fs_fat32.h"
 
 extern u32int total_memory_size;
 

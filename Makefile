@@ -2,12 +2,7 @@ all: kernel
 	
 
 run: kernel
-	qemu-system-i386 -hda test_dysk -monitor stdio -kernel ./bin/kernel.bin
-	
-install: kernel
-	rm /osdysk/kernel.bin
-	cp ./bin/kernel.bin /osdysk/
-	sync
+	qemu-system-i386 -monitor stdio -kernel ./bin/kernel.bin
 
 prepare:
 	mkdir -p bin
@@ -33,9 +28,11 @@ kernel: loader main.c
 	gcc -o ./bin/pisz.o -c pisz.c -m32 -nostdlib -nostartfiles -nodefaultlibs
 	gcc -o ./bin/mouse.o -c mouse.c -m32 -nostdlib -nostartfiles -nodefaultlibs
 	gcc -o ./bin/cmos.o -c cmos.c -m32 -nostdlib -nostartfiles -nodefaultlibs
+	gcc -o ./bin/parttable.o -c parttable.c -m32 -nostdlib -nostartfiles -nodefaultlibs
+	gcc -o ./bin/fs_fat32.o -c fs_fat32.c -m32 -nostdlib -nostartfiles -nodefaultlibs
 	gcc -o ./bin/commands.o -c commands.c -m32 -nostdlib -nostartfiles -nodefaultlibs
 	gcc -o ./bin/main.o -c main.c -m32 -nostdlib -nostartfiles -nodefaultlibs
-	ld -melf_i386 -T linker.ld -o ./bin/kernel.bin ./bin/loader.o ./bin/main.o ./bin/commands.o ./bin/vga.o ./bin/disc.o ./bin/gdt.o ./bin/gdt_asm.o ./bin/idt.o ./bin/idt_asm.o ./bin/exception.o ./bin/exception_asm.o ./bin/keyboard.o ./bin/keyboard_asm.o ./bin/clock.o ./bin/clock_asm.o ./bin/sound.o ./bin/power_asm.o ./bin/pisz.o ./bin/cmos.o ./bin/mouse.o
+	ld -melf_i386 -T linker.ld -o ./bin/kernel.bin ./bin/loader.o ./bin/main.o ./bin/commands.o ./bin/vga.o ./bin/disc.o ./bin/gdt.o ./bin/gdt_asm.o ./bin/idt.o ./bin/idt_asm.o ./bin/exception.o ./bin/exception_asm.o ./bin/keyboard.o ./bin/keyboard_asm.o ./bin/clock.o ./bin/clock_asm.o ./bin/sound.o ./bin/power_asm.o ./bin/pisz.o ./bin/cmos.o ./bin/mouse.o ./bin/parttable.o ./bin/fs_fat32.o
 
 clean:
 	rm -rf ./bin/*

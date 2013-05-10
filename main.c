@@ -45,6 +45,24 @@ void split(char *zrodlo, char *cmd, char *param1)
 
 u32int total_memory_size;
 
+void init_drivers()
+{
+	vga_puts("[INFO] [INIT] [DRV] Sterownik klawiatury...\n");
+	kbd_init();
+	vga_puts("[INFO] [INIT] [DRV] Sterownik myszy...\n");
+	mouse_init();
+	vga_puts("[INFO] [INIT] [DRV] Sterownik zegara...\n");
+	clock_init(100);
+	
+	sti();
+}
+
+void init_filesystem()
+{
+	vga_puts("[INFO] [INIT] [FS] Tablica partycji...\n");
+	parttable_load();
+}
+
 int main(multiboot_info_t* mbd, unsigned int magic)
 {
 	total_memory_size = mbd->mem_lower + mbd->mem_upper;
@@ -54,15 +72,18 @@ int main(multiboot_info_t* mbd, unsigned int magic)
 	exception_init();
 	
 	vga_init();
-	kbd_init();
-	mouse_init();
-	clock_init(100);
-
-	sti();
+	vga_puts("KrzysiekKomp v1.0\nKompilacja: "__DATE__" "__TIME__"\n\nUruchamianie...\n\n\n");
+	vga_puts("[INFO] [INIT] [DRV] Sterownik ekranu...\n");
+	
+	init_drivers();
+	init_filesystem();
+	delay(150);
+	vga_cls();
+	
 	
 	if (magic != MULTIBOOT_BOOTLOADER_MAGIC)
 	{
-		vga_puts("Multiboot error!");
+		vga_puts("[ERROR] Multiboot error!");
 		while (1)
 			hlt();
 	}
@@ -85,6 +106,7 @@ int main(multiboot_info_t* mbd, unsigned int magic)
 			else if(!cmpstr(cmd,"runtime" )) cmd_runtime();
 			else if(!cmpstr(cmd,"beep"    )) cmd_beep();
 			else if(!cmpstr(cmd,"testboot")) cmd_testboot();
+			else if(!cmpstr(cmd,"testpart")) cmd_testpart();
 			else if(!cmpstr(cmd,"memory"  )) cmd_memory();
 			else if(!cmpstr(cmd,"help"    )) cmd_help();
 			else if(!cmpstr(cmd,"reboot"  )) cmd_reboot();

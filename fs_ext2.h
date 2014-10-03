@@ -1,6 +1,9 @@
 #ifndef __FS_EXT2_H_
 #define __FS_EXT2_H_
 
+#define BLOCK_SIZE 1024
+#define EXT2_SIGNATURE 0xef53
+
 typedef struct ext2_superblock {
 	u32int total_inodes;
 	u32int total_blocks;
@@ -58,10 +61,45 @@ typedef struct ext2_block_group_desc {
 	char   unused[14];
 } __attribute__((packed)) ext2_block_group_desc_t;
 
-typedef struct ext2_block_group_desc_table {
-	ext2_block_group_desc_t desc[1024/sizeof(ext2_block_group_desc_t)];
-} __attribute__((packed)) ext2_block_group_desc_table_t;
+/*typedef struct ext2_block_group_desc_table {
+	ext2_block_group_desc_t desc[BLOCK_SIZE/32]; //1024/sizeof(ext2_block_group_desc_t)
+} __attribute__((packed)) ext2_block_group_desc_table_t;*/
+
+typedef struct ext2_inode { //128 bytes
+	u16int type_permissions;
+	u16int user;
+	u32int size_lower;
+	u32int time_last_access;
+	u32int time_creation;
+	u32int time_last_modification;
+	u32int time_deletion;
+	u16int group;
+	u16int hardlink_count;
+	u32int used_setors;
+	u32int flags;
+	u32int os_specific1;
+	u32int direct_block_pointer[12];
+	u32int singly_indirect_block_pointer;
+	u32int doubly_indirect_block_pointer;
+	u32int triply_indirect_block_pointer;
+	u32int generation_number;
+	u32int file_ACL; // in version < 1 = reserved
+	u32int size_upper; //in version < 1 = reserved
+	#define directory_ACL size_upper
+	u32int block_addr;
+	char   os_specific2[12];
+} __attribute__((packed)) ext2_inode_t;
+
+typedef struct ext2_dir_inode_entry {
+	u32int inode;
+	u16int size;
+	u8int  name_length_lower;
+	u8int  type;
+	#define name_length_upper type
+	char   name[MAX_FILENAME]; // Name characters
+} __attribute__((packed)) ext2_dir_inode_entry_t;
 
 void ext2_init(u8int id);
+void ext2_get_inode(u8int id, u32int inode);
 
 #endif

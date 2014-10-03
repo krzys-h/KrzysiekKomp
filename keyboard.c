@@ -56,7 +56,7 @@ unsigned stat, data;
   if(stat & 0x01) 
   { 
    data = inportb(0x60); 
-/* pêtla, gdt b³ad parzystosci, lub koniec czasu oczekiwania */ 
+/* pêtla, gdy b³ad parzystosci, lub koniec czasu oczekiwania */ 
    if((stat & 0xC0) == 0) return data; 
   } 
  } 
@@ -167,7 +167,7 @@ static int set1_scancode_to_ascii(unsigned code)
 	};
  static unsigned saw_break_code, kbd_status; 
 unsigned temp; 
-/* sprawdŸ czy kod break (np. gdy klawisz zosta³ zwolniony) */ 
+/* sprawdz czy kod break (np. gdy klawisz zosta³ zwolniony) */ 
 if(code >= 0x80) 
  { 
   saw_break_code = 1; 
@@ -186,7 +186,7 @@ if(saw_break_code)
   saw_break_code = 0; 
   return -1; 
  } 
-/* jeœli to kod make: sprawdŸ klawisze "meta" 
+/* jesli to kod make: sprawdzklawisze "meta" 
    podobnie jak powy¿ej */ 
 if(code == RAW1_LEFT_ALT || code == RAW1_RIGHT_ALT) 
  { 
@@ -229,7 +229,7 @@ LEDS:
   write_kbd(0x60, temp); 
   return -1; 
  } 
-/* brak konwersji, gdy Alt jest naciœniêty */ 
+/* brak konwersji, gdy Alt jest nacianiêty */ 
 if(kbd_status & KBD_META_ALT) 
   return code; 
 /* konwertuj A-Z[\]^_ na kody sterowania */ 

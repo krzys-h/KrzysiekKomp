@@ -73,20 +73,20 @@ int main(multiboot_info_t* mbd, unsigned int magic)
 	
 	vga_init();
 	vga_puts("KrzysiekKomp v1.0\nKompilacja: "__DATE__" "__TIME__"\n\nUruchamianie...\n\n\n");
-	vga_puts("[INFO] [INIT] [DRV] Sterownik ekranu...\n");
-	
-	init_drivers();
-	init_filesystem();
-	delay(250);
-	vga_cls();
-	
-	
+
 	if (magic != MULTIBOOT_BOOTLOADER_MAGIC)
 	{
 		vga_puts("[ERROR] Multiboot error!");
 		while (1)
 			hlt();
 	}
+
+	vga_puts("[INFO] [INIT] [DRV] Sterownik ekranu...\n");
+	
+	init_drivers();
+	init_filesystem();
+	delay(250);
+	vga_cls();
 
 	vga_puts("KrzysiekKomp v1.0\nKompilacja: "__DATE__" "__TIME__"\n\n");
 
@@ -105,8 +105,6 @@ int main(multiboot_info_t* mbd, unsigned int magic)
 			else if(!cmpstr(cmd,"time"    )) cmd_time();
 			else if(!cmpstr(cmd,"runtime" )) cmd_runtime();
 			else if(!cmpstr(cmd,"beep"    )) cmd_beep();
-			else if(!cmpstr(cmd,"testboot")) cmd_testboot();
-			else if(!cmpstr(cmd,"testpart")) cmd_testpart();
 			else if(!cmpstr(cmd,"memory"  )) cmd_memory();
 			else if(!cmpstr(cmd,"help"    )) cmd_help();
 			else if(!cmpstr(cmd,"reboot"  )) cmd_reboot();

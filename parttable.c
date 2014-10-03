@@ -6,7 +6,7 @@ u8int partition_bootable;
 
 void parttable_load()
 {
-	disc_read(0, 0, 0, 1, 1, (u8int*)&mbr);
+	disc_read_chs(0, 0, 0, 1, 1, (u8int*)&mbr);
 	
 	partition[0] = parttable_process(mbr.part[0]);
 	partition[1] = parttable_process(mbr.part[1]);

@@ -1,7 +1,1 @@
-# Object files
-*.o
-
-# Compiled binary file
-*.bin
-
-intel-manual.pdf
+build/

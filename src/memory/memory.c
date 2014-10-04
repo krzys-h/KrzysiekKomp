@@ -2,6 +2,7 @@
 
 #include "common/asm.h"
 #include "screen/text_screen.h"
+#include "stdlib/printf.h"
 
 extern u8int kernel_end;
 u8int* memory = &kernel_end;
@@ -73,4 +74,25 @@ void free(void* addr)
 	
 	this_block->size = ((u32int)current)-((u32int)addr);
 	this_block->next = current;
+}
+
+void dump_memory()
+{
+	t_memory_header* current = (t_memory_header*)memory;
+	int id = 0;
+	printf("============================== MEMORY DUMP ==============================\n");
+	while(current != NULL) {
+		id++;
+		if(current->magic != MEMORY_HEADER_MAGIC) {
+			printf("CORRUPTED MEMORY BLOCK AT 0x%08X\n", (u32int)current);
+			break;
+		}
+		u32int begin = ((u32int)current+sizeof(t_memory_header));
+		u32int end = ((u32int)current->next);
+		if(end == NULL) end = 0xFFFFFFFF;
+		u32int size = current->size;
+		if(end == 0xFFFFFFFF) size = -1;
+		printf("Memory block %4d: 0x%08X-0x%08X, %6d B, %s\n", id, begin, end, size, current->used != 0 ? "used" : "free");
+		current = current->next;
+	}
 }

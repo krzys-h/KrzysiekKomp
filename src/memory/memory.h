@@ -20,6 +20,7 @@ extern u8int* memory;
 
 void* malloc(unsigned int size);
 void free(void* addr);
+void dump_memory();
 
 #ifdef __cplusplus
 inline void *operator new(size_t size)

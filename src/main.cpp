@@ -26,10 +26,20 @@ int main(multiboot_info_t* mbinfo, unsigned int mbmagic)
 	std::cout << "KrzysiekKomp v1.0" << std::endl;
 	std::cout << "Compiled at: " << __DATE__ << " " << __TIME__ << std::endl << std::endl;
 	
-	char* buf = new char[128];
-	std::cin >> buf;
-	std::cout << buf << std::endl;
-	delete buf;
+	dump_memory();
+	char* buf1 = new char[512];
+	char* buf2 = new char[256];
+	dump_memory();
+	delete buf1;
+	dump_memory();
+	buf1 = new char[128];
+	char* buf3 = new char[128];
+	dump_memory();
+	delete buf2;
+	dump_memory();
+	delete buf1;
+	delete buf3;
+	dump_memory();
 	
 	std::cout << "END OF KERNEL";
 	hang();

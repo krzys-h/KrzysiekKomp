@@ -172,9 +172,9 @@ DO_NUM:				if(flags & PR_32)
 				else if(flags & PR_16)
 				{
 					if(flags & PR_SG)
-						num = va_arg(args, short);
+						num = (short)va_arg(args, int);
 					else
-						num = va_arg(args, unsigned short);
+						num = (unsigned short)va_arg(args, unsigned int);
 				}
 /* no h nor l: sizeof(int) bits (signed or unsigned) */
 				else
@@ -216,7 +216,7 @@ OK, I found my mistake. The math here is _always_ unsigned */
 				flags &= ~PR_LZ;
 				where--;
 				*where = (unsigned char)va_arg(args,
-					unsigned char);
+					unsigned int);
 				actual_wd = 1;
 				goto EMIT2;
 			case 's':

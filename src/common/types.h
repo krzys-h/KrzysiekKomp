@@ -9,3 +9,4 @@ typedef signed char s8int;
 #ifndef __cplusplus
 typedef enum { false, true } bool;
 #endif
+typedef unsigned int size_t;

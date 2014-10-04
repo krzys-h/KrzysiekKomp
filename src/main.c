@@ -8,6 +8,7 @@
 #include "services/keyboard.h"
 #include "memory/memory.h"
 #include "hdd/hdd.h"
+#include "stdlib/printf.h"
 
 int main(multiboot_info_t* mbinfo, unsigned int mbmagic)
 {
@@ -49,6 +50,9 @@ int main(multiboot_info_t* mbinfo, unsigned int mbmagic)
 	/*u8int* buffer = malloc(512);
 	hdd_read(0, 1, buffer);
 	free(buffer);*/
+	
+	// printf test
+	//printf("Printf test: %d\n", 5);
 	
 	screen_print("END OF KERNEL");
 	hang();

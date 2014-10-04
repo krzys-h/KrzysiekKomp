@@ -27,6 +27,9 @@ src/services/keyboard.c
 src/services/keyboard.asm
 src/memory/memory.c
 src/hdd/hdd.c
+src/stdlib/string.c
+src/stdlib/printf/doprintf.c
+src/stdlib/printf.c
 )
 
 ADD_LIBRARY(kernel.img STATIC ${SRC})

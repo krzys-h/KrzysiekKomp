@@ -6,6 +6,7 @@
 #include "services/clock.h"
 #include "services/keyboard.h"
 #include "memory/memory.h"
+#include "hdd/hdd.h"
 
 int main(multiboot_info_t* mbinfo, unsigned int mbmagic)
 {
@@ -30,14 +31,22 @@ int main(multiboot_info_t* mbinfo, unsigned int mbmagic)
 	memtest1 = malloc(16);*/
 	
 	// memory & keyboard test
-	void* buf = malloc(SCREEN_WIDTH);
+	/*void* buf = malloc(SCREEN_WIDTH);
 	getstring(buf);
 	screen_print(buf);
-	free(buf);
+	free(buf);*/
 	
 	// clock test
-	while(true) {
+	/*while(true) {
 		screen_printchar('.');
 		delay(100);
-	}
+	}*/
+	
+	// hdd read test
+	/*u8int* buffer = malloc(512);
+	hdd_read(0, 1, buffer);
+	free(buffer);*/
+	
+	screen_print("END OF KERNEL");
+	hang();
 }

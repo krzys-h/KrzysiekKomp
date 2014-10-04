@@ -35,7 +35,7 @@ void screen_scroll()
 
 void screen_printcharcolor(char c, u16int color)
 {
-	if(cursor == SCREEN_WIDTH * (SCREEN_HEIGHT-1)) {
+	if(cursor == SCREEN_WIDTH * SCREEN_HEIGHT) {
 		screen_scroll();
 		screen_setcursor(SCREEN_WIDTH*(SCREEN_HEIGHT-1));
 	}

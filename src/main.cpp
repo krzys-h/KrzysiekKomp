@@ -32,8 +32,8 @@ int main(multiboot_info_t* mbinfo, unsigned int mbmagic)
 	dump_memory();
 	delete buf1;
 	dump_memory();
-	buf1 = new char[128];
-	char* buf3 = new char[128];
+	buf1 = new char[256];
+	char* buf3 = new char[256];
 	dump_memory();
 	delete buf2;
 	dump_memory();
@@ -41,6 +41,6 @@ int main(multiboot_info_t* mbinfo, unsigned int mbmagic)
 	delete buf3;
 	dump_memory();
 	
-	std::cout << "END OF KERNEL";
+	std::cout << std::endl << std::endl << "END OF KERNEL";
 	hang();
 }

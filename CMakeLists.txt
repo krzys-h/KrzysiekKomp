@@ -14,6 +14,7 @@ SET(SRC
 src/boot.asm
 src/main.c
 src/screen/text_screen.c
+src/screen/serial.c
 src/arch/gdt.c
 src/arch/gdt.asm
 src/arch/idt.c

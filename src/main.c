@@ -1,6 +1,7 @@
 #include <multiboot.h>
 #include "common/asm.h"
 #include "screen/text_screen.h"
+#include "screen/serial.h"
 #include "arch/gdt.h"
 #include "arch/idt.h"
 #include "services/clock.h"
@@ -19,10 +20,12 @@ int main(multiboot_info_t* mbinfo, unsigned int mbmagic)
 	idt_init();
 	clock_init();
 	keyboard_init();
+	serial_init();
 	sti(); // enable interrupts
 	
 	screen_clear();
 	screen_print("KrzysiekKomp v1.0\nCompiled at: "__DATE__" "__TIME__"\n\n");
+	serial_print("KrzysiekKomp v1.0\nCompiled at: "__DATE__" "__TIME__"\n\n");
 	
 	// memory test
 	/*void* memtest1 = malloc(32);

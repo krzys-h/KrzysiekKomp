@@ -14,3 +14,10 @@ static inline void sti()
 {
 	asm volatile("sti");
 }
+
+static inline void hang()
+{
+	cli();
+	while(1)
+		hlt();
+}

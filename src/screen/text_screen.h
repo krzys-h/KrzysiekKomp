@@ -2,8 +2,8 @@
 
 #include "common/types.h"
 
-#define SCREEN_WIDTH 25
-#define SCREEN_HEIGHT 80
+#define SCREEN_HEIGHT 25
+#define SCREEN_WIDTH 80
 #define SCREEN_DEFAULT_COLOR 3840
 //TODO: 3840 = ((((0 << 4) | (15 & 0x0F)) << 8))
 

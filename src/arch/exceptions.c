@@ -112,7 +112,7 @@ void do_exc14()
 	hang();
 }
 
-void exception_init()
+void exceptions_init()
 {
 	idt_set_trap_gate(&idt[0], (u32int)&exc0);
 	idt_set_trap_gate(&idt[1], (u32int)&exc1);

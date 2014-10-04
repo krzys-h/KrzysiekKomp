@@ -1,5 +1,9 @@
 #pragma once
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "common/types.h"
 
 void keyboard_init();
@@ -44,3 +48,7 @@ int getstring(char* buf);
 #define      KBD_META_CAPS      0x1000
 #define      KBD_META_NUM      0x2000
 #define      KBD_META_SCRL      0x4000
+
+#ifdef __cplusplus
+}
+#endif

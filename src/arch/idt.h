@@ -1,5 +1,9 @@
 #pragma once
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "common/types.h"
 
 typedef struct idt_descr {
@@ -27,3 +31,7 @@ void disable_irq(unsigned int irq);
 void set_clock_frequency(unsigned long f);
 void idt_init();
 extern idt_descr_t idt[IDT_LEN];
+
+#ifdef __cplusplus
+}
+#endif

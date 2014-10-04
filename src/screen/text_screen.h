@@ -1,5 +1,9 @@
 #pragma once
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "common/types.h"
 
 #define SCREEN_HEIGHT 25
@@ -13,3 +17,7 @@ void screen_printchar(char c);
 void screen_printcharcolor(char c, u16int color);
 void screen_print(const char* s);
 void screen_printcolor(const char* s, u16int color);
+
+#ifdef __cplusplus
+}
+#endif

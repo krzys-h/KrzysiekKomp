@@ -3,7 +3,7 @@
 #include "screen/text_screen.h"
 #include "stdlib/va_list.h"
 
-int printf_fnc(unsigned char c, void **ptr)
+int printf_fnc(unsigned c, void **ptr)
 {
 	screen_printchar(c);
 }

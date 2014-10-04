@@ -1,5 +1,9 @@
 #pragma once
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "common/types.h"
 
 #define MEMORY_HEADER_MAGIC 0xABCD1234
@@ -16,3 +20,7 @@ extern u8int* memory;
 
 void* malloc(unsigned int size);
 void free(void* addr);
+
+#ifdef __cplusplus
+}
+#endif

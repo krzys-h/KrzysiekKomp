@@ -4,6 +4,7 @@
 #include "screen/serial.h"
 #include "arch/gdt.h"
 #include "arch/idt.h"
+#include "arch/exceptions.h"
 #include "services/clock.h"
 #include "services/keyboard.h"
 #include "memory/memory.h"
@@ -19,14 +20,15 @@ int main(multiboot_info_t* mbinfo, unsigned int mbmagic)
 	
 	gdt_init();
 	idt_init();
+	exceptions_init();
 	clock_init();
 	keyboard_init();
-	serial_init();
+	//serial_init();
 	sti(); // enable interrupts
 	
 	screen_clear();
-	screen_print("KrzysiekKomp v1.0\nCompiled at: "__DATE__" "__TIME__"\n\n");
-	serial_print("KrzysiekKomp v1.0\nCompiled at: "__DATE__" "__TIME__"\n\n");
+	printf("KrzysiekKomp v1.0\nCompiled at: %s %s\n\n", __DATE__, __TIME__);
+	//serial_print("KrzysiekKomp v1.0\nCompiled at: "__DATE__" "__TIME__"\n\n");
 	
 	// memory test
 	/*void* memtest1 = malloc(32);

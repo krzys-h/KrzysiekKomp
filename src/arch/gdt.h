@@ -1,5 +1,9 @@
 #pragma once
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "common/types.h"
 
 // http://lukaszsowa.pl/2010/10/gdt/
@@ -25,3 +29,7 @@ typedef struct gdt_ptr
 void gdt_set_desc(gdt_descr_t* descr, u32int base, u32int limit, u8int access, u8int granularity);
 extern void gdt_set(gdt_ptr_t* gdt_ptr);
 void gdt_init();
+
+#ifdef __cplusplus
+}
+#endif

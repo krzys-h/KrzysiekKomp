@@ -9,10 +9,10 @@ int cursor;
 void screen_setcursor(int cursorpos)
 {
 	cursor = cursorpos;
-	outportb(0x3D4+0,14);
-	outportb(0x3D4+1,cursor>>8);
-	outportb(0x3D4+0,15);
-	outportb(0x3D4+1,cursor);
+	outportb(0x3D4+0, 14);
+	outportb(0x3D4+1, cursor>>8);
+	outportb(0x3D4+0, 15);
+	outportb(0x3D4+1, cursor);
 }
 
 void screen_clear()

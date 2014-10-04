@@ -22,4 +22,10 @@ SECTIONS {
     .bss : {
         *(.bss)
     }
+
+    /DISCARD/ : {
+        *(.comment)
+    }
+
+    kernel_end = .;
 }

@@ -24,6 +24,7 @@ src/services/clock.c
 src/services/clock.asm
 src/services/keyboard.c
 src/services/keyboard.asm
+src/memory/memory.c
 )
 
 ADD_LIBRARY(kernel.img STATIC ${SRC})

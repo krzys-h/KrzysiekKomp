@@ -30,9 +30,6 @@
      /* The magic number passed by a Multiboot-compliant boot loader. */
      #define MULTIBOOT_BOOTLOADER_MAGIC      0x2BADB002
      
-     /* The size of our stack (16KB). */
-     #define STACK_SIZE                      0x4000
-     
      /* Types. */
      
      /* The Multiboot header. */

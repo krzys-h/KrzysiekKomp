@@ -5,6 +5,7 @@
 #include "arch/idt.h"
 #include "services/clock.h"
 #include "services/keyboard.h"
+#include "memory/memory.h"
 
 int main(multiboot_info_t* mbinfo, unsigned int mbmagic)
 {
@@ -22,13 +23,20 @@ int main(multiboot_info_t* mbinfo, unsigned int mbmagic)
 	screen_clear();
 	screen_print("KrzysiekKomp v1.0\nCompiled at: "__DATE__" "__TIME__"\n\n");
 	
-	// keyboard test
-	char buf[SCREEN_WIDTH];
-	getstring(&buf[0]);
+	// memory test
+	/*void* memtest1 = malloc(32);
+	void* memtest2 = malloc(8);
+	free(memtest1);
+	memtest1 = malloc(16);*/
+	
+	// memory & keyboard test
+	void* buf = malloc(SCREEN_WIDTH);
+	getstring(buf);
 	screen_print(buf);
+	free(buf);
 	
 	// clock test
-	while(1) {
+	while(true) {
 		screen_printchar('.');
 		delay(100);
 	}
